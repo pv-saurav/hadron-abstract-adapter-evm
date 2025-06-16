@@ -1,0 +1,22 @@
+{
+  "name": "@hadron/abstract-adapter-evm",
+  "version": "1.0.0",
+  "description": "Abstract interface definition of Evm Wallet Adapters.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "pnpm build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.5.2",
+  "devDependencies": {
+    "@types/node": "^24.0.1",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "eventemitter3": "^5.0.1"
+  }
+}
