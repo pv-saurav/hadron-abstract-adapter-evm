@@ -76,6 +76,7 @@ export interface AdapterProps<Name extends string = string> {
 
     connect(options?: Record<string, unknown>): Promise<string>;
     getProvider(): Promise<EIP1193Provider | null>;
+    getChainId(): Promise<string | null>;
     signMessage(params: { message: string; address?: string }): Promise<string>;
     signTypedData(params: { typedData: TypedData; address?: string }): Promise<string>;
     sendTransaction(transaction: any): Promise<string>;
@@ -150,6 +151,15 @@ export abstract class Adapter<Name extends string = string>
             params: [chainInfo],
         });
     }
+
+    async getChainId(): Promise<string | null> {
+        const provider = await this.prepareProvider();
+        return provider.request({
+            method: 'eth_chainId',
+            params: [],
+        });
+    }
+    
     async switchChain(chainId: `0x${string}`): Promise<null> {
         const provider = await this.prepareProvider();
         return provider.request({
